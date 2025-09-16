@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 * {
     padding: 0;
@@ -9,7 +11,7 @@
 
 :root {
     /*Pokédex background*/
-    --background-color: #c1121f
+    --background-color: #e43414
 
 
 
@@ -17,17 +19,29 @@
 }
 
 /*Retro Font*/
-.press-start-2p-regular {
+.press-start-font {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
 }
 
+/*Roboto font*/
+
+.roboto-font {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
 
 #display-box {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
+    padding: 20px;
 }
 
 .bodyheader {
@@ -79,10 +93,22 @@
 .small-circle {
     height: 12px;
     width: 12px;
-    background-color: yellow;
     border-radius: 50%;
     margin-right: 5px;
 }
+
+.small-circle1 {
+    background-color: #ff5f56;
+}
+
+.small-circle2 {
+    background-color: #ffbd2e;
+}
+
+.small-circle3 {
+    background-color: #27c93f;
+}
+
 
 main {
     padding: 2rem;
@@ -91,6 +117,7 @@ main {
 .poke-description {
     padding-top: 20px;
     padding-bottom: 20px;
+
 }
 
 .poke-display {
@@ -98,6 +125,28 @@ main {
     min-height: 400px;
     background-color: black;
 }
+
+.poke-description-box {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.retro-poke-description {
+    color: #66d3a8;
+    font-size: 0.575rem;
+    line-height: 1.25rem;
+}
+
+.retro-poke-description-h2 {
+    font-size: 0.875rem;
+
+}
+
 
 
 
