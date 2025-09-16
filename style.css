@@ -59,7 +59,7 @@
 
 .section1 {
     background-color: var(--background-color);
-    height: 660px;
+    min-height: 660px;
     flex-basis: 600px;
     flex-shrink: 1;
     flex-grow: 0;
@@ -70,7 +70,8 @@
 
 .poke-header {
     height: 64px;
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
+    border-color: #b4240c;
     display: flex;
     align-items: center;
 }
@@ -82,12 +83,13 @@
 
 
 .large-circle {
-    width: 35px;
-    height: 35px;
-    background-color: blue;
+    margin: 15px;
+    width: 2.18rem;
+    height: 2.18rem;
+    background-color: #64e7f8;
     border-radius: 50%;
-    margin-right: 15px;
-    margin-left: 15px;
+    border: 3px solid;
+    border-color: #1e98ca;
 }
 
 .small-circle {
@@ -114,6 +116,14 @@ main {
     padding: 2rem;
 }
 
+main > h1 {
+    color: white;
+}
+
+main > p {
+    color: white;
+}
+
 .poke-description {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -122,7 +132,7 @@ main {
 
 .poke-display {
     width: 100%;
-    min-height: 400px;
+    max-height: 400px;
     background-color: black;
 }
 
@@ -140,11 +150,43 @@ main {
     color: #66d3a8;
     font-size: 0.575rem;
     line-height: 1.25rem;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .retro-poke-description-h2 {
     font-size: 0.875rem;
+    padding-left: 5%;
+    padding-right: 5%;
 
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+}
+
+footer > form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2%;
+}
+
+footer > form > input {
+    flex-basis: 150px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding: 4px;
+}
+
+footer > form > button {
+    padding: 3px;
 }
 
 
