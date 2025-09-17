@@ -32,8 +32,7 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  font-variation-settings:"wdth" 100;
 }
 
 
@@ -42,6 +41,7 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+    gap: 20px;
 }
 
 .bodyheader {
@@ -129,16 +129,23 @@ main > p {
 
 }
 
-.poke-display {
+.poke-display-box {
     width: 100%;
-    max-height: 400px;
     background-color: black;
     border-radius: 10px;
 }
 
-.poke-description-box {
+.poke-display {
     width: 100%;
     aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.poke-description-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -150,14 +157,10 @@ main > p {
     color: #66d3a8;
     font-size: 0.575rem;
     line-height: 1.25rem;
-    padding-left: 5%;
-    padding-right: 5%;
 }
 
 .retro-poke-description-h2 {
     font-size: 0.875rem;
-    padding-left: 5%;
-    padding-right: 5%;
 
 }
 
@@ -202,10 +205,56 @@ footer > form > button {
 }
 
 footer > form > button > img {
+    padding: 2px;
     width: 20px;
+}
+
+.new-poke-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 100%;
+}
+
+.new-span-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.new-poke-box > div > span  {
+    font-family: "Press Start 2P";
+    font-size: 0.55rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+    color: black;
+}
+
+.new-poke-box > img {
+    width: 100%;
+    height: auto;
+    display: block;
+    
 }
 
 
 
 
 
+@media (max-width: 460px) {
+    .poke-description{
+        font-size: 0.755rem ;
+    }
+
+    .retro-poke-description {
+        font-size: 0.55rem;
+    }
+}
