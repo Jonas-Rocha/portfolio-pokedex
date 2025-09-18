@@ -1,7 +1,6 @@
 const formSubmit = document.getElementById("form-submit");
 const search = document.getElementById("search");
 const submitButton = document.getElementById("submit");
-const pokeImg = document.getElementById("poke-img");
 
 
 
@@ -11,13 +10,33 @@ formSubmit.addEventListener('submit', async (event) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonValue}`
 
 
+
     try {
-    const pokeInitialDescription = document.getElementsByClassName
+    
     const response = await fetch(url);
     if (response.status === 200) {
     const pokeObj = await response.json();
-    pokeImg.setAttribute("src", `${pokeObj.sprites.front_default}`);
+    //Capturando a div das boas vindas(poke-description-box);
+    const pokeDescriptionBox = document.getElementsByClassName("poke-description-box")[0];
 
+    if (pokemonValue !== "") {
+    pokeDescriptionBox.style.display = "none" // Se a api resultar em 200 e o usuário digitar algo, desabilidar as boas vindas.
+    }
+
+
+    //Capturando a div pai(poke-display);
+    const pokeDisplay = document.getElementsByClassName("poke-display")[0];
+
+
+
+    //Criando a variável da div pai (onde serão inseridos os spans);
+    const newPokeBox = document.createElement("div");
+    newPokeBox.setAttribute("class", "new-poke-box");
+
+    //Criando o img do novo pokemon [img id="poke-img"]
+    const pokeImg = document.createElement("img");
+    pokeImg.setAttribute("id", "poke-img");
+    pokeImg.setAttribute("src", `${pokeObj.sprites.front_default}`); //Buscando o pokémon na API
 
     //Criando a box dos elementos do span [div class new-span-box]
     const newSpanBox = document.createElement("div");
@@ -38,25 +57,12 @@ formSubmit.addEventListener('submit', async (event) => {
     spanGeneration.setAttribute("id", "generation");
     spanGeneration.setAttribute("class", "new-span");
 
-    //Criando a variável da div pai (onde serão inseridos os spans);
-    const newPokeBox = document.getElementsByClassName("new-poke-box")[0];
-    newPokeBox.append(newSpanBox)[1]
-
-
-
-
-
-    // lembre que tudo isso é dentro do poke display. arrume!
-
-
-
-
-
-
-
-
-
-
+    pokeDisplay.insertBefore(newPokeBox, null); // Adicionando a div (new-poke-box) dentro do elemento pai (poke-display).
+    newPokeBox.appendChild(pokeImg);
+    newPokeBox.appendChild(newSpanBox);
+    newSpanBox.appendChild(spanType);
+    newSpanBox.appendChild(spanRegion);
+    newSpanBox.appendChild(spanGeneration);
 
 
     }
