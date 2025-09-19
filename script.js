@@ -21,6 +21,9 @@ formSubmit.addEventListener('submit', async (event) => {
 
     if (pokemonValue !== "") {
     pokeDescriptionBox.style.display = "none" // Se a api resultar em 200 e o usuário digitar algo, desabilidar as boas vindas.
+
+    } else {
+        alert("Type something");
     }
 
 
@@ -46,19 +49,19 @@ formSubmit.addEventListener('submit', async (event) => {
     const spanType = document.createElement("span");
     spanType.setAttribute("id", "type");
     spanType.setAttribute("class", "new-span");
-    spanType.innerText = `Type:${pokeObj.types[0].type.name}`
+    spanType.innerText = `Type: ${pokeObj.types[0].type.name}`
 
     //Criando os spans [span id="weight", class="new-span"]
     const spanWeight = document.createElement("span");
     spanWeight.setAttribute("id", "weight");
     spanWeight.setAttribute("class", "new-span");
-    spanWeight.innerText = `Weight:${pokeObj.weight}`;
+    spanWeight.innerText = `Weight: ${pokeObj.weight}`;
 
     //Criando os spans [span id="generation", class="new-span"]
     const spanGeneration = document.createElement("span");
     spanGeneration.setAttribute("id", "generation");
     spanGeneration.setAttribute("class", "new-span");
-    spanGeneration.innerText = `Generation:${pokeObj.past_abilities[0].generation.name}`
+    spanGeneration.innerText = `Generation: ${pokeObj.past_abilities[0].generation.name}`
 
     pokeDisplay.insertBefore(newPokeBox, null); // Adicionando a div (new-poke-box) dentro do elemento pai (poke-display).
     newPokeBox.appendChild(pokeImg);
@@ -67,6 +70,9 @@ formSubmit.addEventListener('submit', async (event) => {
     newSpanBox.appendChild(spanWeight);
     newSpanBox.appendChild(spanGeneration);
 
+    for (let i = 0; i < pokeDisplay.children.length; i++) {
+        pokeDisplay.children.length > 2 ? pokeDisplay.children[1].remove() : console.log("erro")
+    }
 
     }
 

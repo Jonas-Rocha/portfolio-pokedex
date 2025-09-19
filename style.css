@@ -228,26 +228,13 @@ footer > form > button > img {
     padding: 10px;
 }
 
-.new-poke-box > div > span  {
-    font-family: "Press Start 2P";
-    font-size: 0.55rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    height: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 15px;
-    color: black;
-}
 
 .new-poke-box > img {
     width: 100%;
     height: auto;
     display: block;
     object-fit: contain; /* Esta propriedade é crucial */
-    max-height: 70%; /* Limita a altura para caber no container */
+    max-height: 50%; /* Limita a altura para caber no container */
     
 }
 
@@ -286,8 +273,12 @@ footer > form > button > img {
 
 
 @media (max-width: 480px) {
+    #poke-img {
+        width: 70%;
+    }
+
     .new-span {
-        font-size: 0.45rem;
+        font-size: 0.4rem;
         padding: 0 8px;
     }
     
@@ -297,12 +288,20 @@ footer > form > button > img {
 }
 
 @media (max-width: 360px) {
+    #poke-img {
+        width: 70%;
+    }
+
+
     .new-span-box {
         flex-direction: column;
     }
     
     .new-span {
-        width: 100%;
+        font-size: 0.4rem;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 90%;
         max-width: 200px;
     }
 }
