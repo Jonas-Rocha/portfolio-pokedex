@@ -46,22 +46,25 @@ formSubmit.addEventListener('submit', async (event) => {
     const spanType = document.createElement("span");
     spanType.setAttribute("id", "type");
     spanType.setAttribute("class", "new-span");
+    spanType.innerText = `Type:${pokeObj.types[0].type.name}`
 
-    //Criando os spans [span id="region", class="new-span"]
-    const spanRegion = document.createElement("span");
-    spanRegion.setAttribute("id", "region");
-    spanRegion.setAttribute("class", "new-span");
+    //Criando os spans [span id="weight", class="new-span"]
+    const spanWeight = document.createElement("span");
+    spanWeight.setAttribute("id", "weight");
+    spanWeight.setAttribute("class", "new-span");
+    spanWeight.innerText = `Weight:${pokeObj.weight}`;
 
     //Criando os spans [span id="generation", class="new-span"]
     const spanGeneration = document.createElement("span");
     spanGeneration.setAttribute("id", "generation");
     spanGeneration.setAttribute("class", "new-span");
+    spanGeneration.innerText = `Generation:${pokeObj.past_abilities[0].generation.name}`
 
     pokeDisplay.insertBefore(newPokeBox, null); // Adicionando a div (new-poke-box) dentro do elemento pai (poke-display).
     newPokeBox.appendChild(pokeImg);
     newPokeBox.appendChild(newSpanBox);
     newSpanBox.appendChild(spanType);
-    newSpanBox.appendChild(spanRegion);
+    newSpanBox.appendChild(spanWeight);
     newSpanBox.appendChild(spanGeneration);
 
 
