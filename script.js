@@ -26,6 +26,8 @@ formSubmit.addEventListener('submit', async (event) => {
         alert("Type something");
     }
 
+    const sound = document.getElementById("sound");
+
 
     //Capturando a div pai(poke-display);
     const pokeDisplay = document.getElementsByClassName("poke-display")[0];
@@ -69,6 +71,11 @@ formSubmit.addEventListener('submit', async (event) => {
     newSpanBox.appendChild(spanType);
     newSpanBox.appendChild(spanWeight);
     newSpanBox.appendChild(spanGeneration);
+    newSpanBox.style.paddingBottom = "30px"
+    sound.play() // Adiciona o som apos o click no botão
+
+
+
 
     for (let i = 0; i < pokeDisplay.children.length; i++) {
         pokeDisplay.children.length > 2 ? pokeDisplay.children[1].remove() : console.log("erro")

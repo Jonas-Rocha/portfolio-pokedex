@@ -195,6 +195,19 @@ footer > form > input {
     
 }
 
+footer > form > input::placeholder {
+    font-size: 0.95rem;
+    font-family: "Roboto", "sans-serif";
+    padding-left: 10px;
+}
+
+
+
+
+
+
+
+
 footer > form > button {
     padding: 7px;
     border-radius: 50%;
@@ -278,7 +291,7 @@ footer > form > button > img {
     }
 
     .new-span {
-        font-size: 0.4rem;
+        font-size: 0.5rem;
         padding: 0 8px;
     }
     
