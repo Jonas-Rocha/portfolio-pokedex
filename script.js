@@ -19,6 +19,33 @@ formSubmit.addEventListener('submit', async (event) => {
     //Capturando a div das boas vindas(poke-description-box);
     const pokeDescriptionBox = document.getElementsByClassName("poke-description-box")[0];
 
+    // Pokémon color type
+    let colorType = [
+        {
+        bug: "#1c4b27",
+        dark: "#040706",
+        dragon: "#448b95",
+        electric: "#e3e32b",
+        fairy: "#971944",
+        fighting: "#994023",
+        fire: "#ab1f23",
+        flying: "#4a677d",
+        ghost: "#33336b",
+        grass: "#147b3d",
+        ground: "#a9702c",
+        ice: "#86d2f5",
+        normal: "#75515b",
+        poison: "#5e2d88",
+        psychic: "#a11660ff",
+        rock: "#48180b",
+        steel: "#5f756d",
+        water: "#1552e2",
+        }
+    ]
+
+
+
+
     if (pokemonValue !== "") {
     pokeDescriptionBox.style.display = "none" // Se a api resultar em 200 e o usuário digitar algo, desabilidar as boas vindas.
 
@@ -53,6 +80,7 @@ formSubmit.addEventListener('submit', async (event) => {
     spanType.setAttribute("class", "new-span");
     spanType.innerText = `Type: ${pokeObj.types[0].type.name}`
 
+
     //Criando os spans [span id="weight", class="new-span"]
     const spanWeight = document.createElement("span");
     spanWeight.setAttribute("id", "weight");
@@ -76,17 +104,24 @@ formSubmit.addEventListener('submit', async (event) => {
 
 
 
+    const colorObj = colorType[0];
+    const type = pokeObj.types[0].type.name;
+    const spans = document.querySelectorAll(".new-span")
+    spans.forEach((span) => {
+        span.style.backgroundColor = colorObj[type];
+    })
 
-    for (let i = 0; i < pokeDisplay.children.length; i++) {
-        pokeDisplay.children.length > 2 ? pokeDisplay.children[1].remove() : console.log("erro")
+
+    // for (let i = 0; i < pokeDisplay.children.length; i++) {
+    //     pokeDisplay.children.length > 2 ? pokeDisplay.children[1].remove() : console.log("erro")
+    // }
+
+    // Forma melhor de atualizar os pokemons em tela:
+    while (pokeDisplay.children.length > 2) {
+    pokeDisplay.children[1].remove();
     }
 
     }
-
-    
-
-
-
 
 
     } catch (error) {

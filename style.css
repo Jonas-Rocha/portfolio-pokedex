@@ -247,7 +247,7 @@ footer > form > button > img {
     height: auto;
     display: block;
     object-fit: contain; /* Esta propriedade é crucial */
-    max-height: 50%; /* Limita a altura para caber no container */
+    max-height: 40%; /* Limita a altura para caber no container */
     
 }
 
