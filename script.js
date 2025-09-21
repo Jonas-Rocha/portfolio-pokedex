@@ -111,11 +111,6 @@ formSubmit.addEventListener('submit', async (event) => {
         span.style.backgroundColor = colorObj[type];
     })
 
-
-    // for (let i = 0; i < pokeDisplay.children.length; i++) {
-    //     pokeDisplay.children.length > 2 ? pokeDisplay.children[1].remove() : console.log("erro")
-    // }
-
     // Forma melhor de atualizar os pokemons em tela:
     while (pokeDisplay.children.length > 2) {
     pokeDisplay.children[1].remove();
