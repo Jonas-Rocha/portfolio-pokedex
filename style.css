@@ -136,6 +136,7 @@ main > p {
 }
 
 .poke-display {
+    max-height: 50vh;
     width: 100%;
     aspect-ratio: 1 / 1;
     display: flex;
