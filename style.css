@@ -10,23 +10,18 @@
 
 
 :root {
-    /*Pokédex background*/
-    --background-color: #e43414
-
-
-
-
+    /* Pokédex background */
+    --background-color: #e43414;
 }
 
-/*Retro Font*/
+/* Retro Font */
 .press-start-font {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
 }
 
-/*Roboto font*/
-
+/* Roboto font */
 .roboto-font {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -144,7 +139,7 @@ main > p {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    overflow: hidden; /* Impede que a imagem transborde */
+    overflow: hidden; /* Prevents the image from overflowing */
 }
 
 .poke-description-box {
@@ -202,13 +197,6 @@ footer > form > input::placeholder {
     padding-left: 10px;
 }
 
-
-
-
-
-
-
-
 footer > form > button {
     padding: 7px;
     border-radius: 50%;
@@ -247,8 +235,8 @@ footer > form > button > img {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain; /* Esta propriedade é crucial */
-    max-height: 40%; /* Limita a altura para caber no container */
+    object-fit: contain; /* This property is crucial */
+    max-height: 40%; /* Limits the height to fit within the container */
     
 }
 
@@ -270,10 +258,6 @@ footer > form > button > img {
     flex-shrink: 1;
     min-width: 0;
 }
-
-
-
-
 
 @media (max-width: 460px) {
     .poke-description{
