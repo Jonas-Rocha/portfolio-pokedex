@@ -1,11 +1,20 @@
 const formSubmit = document.getElementById("form-submit");
 const search = document.getElementById("search");
 const submitButton = document.getElementById("submit");
+const regex = /^[A-Za-z]/g
+
+
+search.addEventListener("input", (event) => {
+    event.target.value = event.target.value.replace(/[^A-Za-z]/g, "");
+});
 
 formSubmit.addEventListener('submit', async (event) => {
     event.preventDefault();
+    
     const pokemonValue = search.value.toLowerCase();
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonValue}`;
+
+
 
     try {
         const response = await fetch(url);
