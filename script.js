@@ -13,7 +13,7 @@ formSubmit.addEventListener('submit', async (event) => {
     
     const pokemonValue = search.value.toLowerCase();
     const url = `https://pokeapi.co/api/v2/pokemon/${pokemonValue}`;
-
+nnbnnn
 
 
     try {
@@ -90,9 +90,7 @@ formSubmit.addEventListener('submit', async (event) => {
             spanGeneration.setAttribute("id", "generation");
             spanGeneration.setAttribute("class", "new-span");
             
-            // The 'past_abilities' array might be empty. It is better to get generation from the species endpoint for reliability.
-            // However, to keep it simple and within the scope of the original code, we will add a check.
-            // A more robust solution would be another API call: `https://pokeapi.co/api/v2/pokemon-species/${pokemonValue}`
+            
             let generationName = "N/A";
             if (pokeObj.species && pokeObj.species.url) {
                 try {
