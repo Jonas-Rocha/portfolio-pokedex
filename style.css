@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-
 :root {
-    /* Pokédex background */
-    --background-color: #e43414;
+  /* Pokédex background */
+  --background-color: #e43414;
 }
 
 /* Retro Font */
@@ -27,279 +25,333 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings:"wdth" 100;
+  font-variation-settings: "wdth" 100;
 }
 
-
-
 #display-box {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
 }
 
 .bodyheader {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .bodyheader > h1 {
-    font-size: 16px;
-    padding-left: 15%;
+  font-size: 16px;
+  padding-left: 15%;
 }
 
 .section1 {
-    background-color: var(--background-color);
-    flex-basis: 600px;
-    flex-shrink: 1;
-    flex-grow: 0;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--background-color);
+  flex-basis: 600px;
+  flex-shrink: 1;
+  flex-grow: 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .poke-header {
-    height: 64px;
-    border-bottom: 3px solid;
-    border-color: #b4240c;
-    display: flex;
-    align-items: center;
+  height: 64px;
+  border-bottom: 3px solid;
+  border-color: #b4240c;
+  display: flex;
+  align-items: center;
 }
 
 .poke-header > nav {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-
 .large-circle {
-    margin: 15px;
-    width: 2.18rem;
-    height: 2.18rem;
-    background-color: #64e7f8;
-    border-radius: 50%;
-    border: 3px solid;
-    border-color: #1e98ca;
+  margin: 15px;
+  width: 2.18rem;
+  height: 2.18rem;
+  background-color: #64e7f8;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #1e98ca;
 }
 
 .small-circle {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    margin-right: 5px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 .small-circle1 {
-    background-color: #ff5f56;
+  background-color: #ff5f56;
 }
 
 .small-circle2 {
-    background-color: #ffbd2e;
+  background-color: #ffbd2e;
 }
 
 .small-circle3 {
-    background-color: #27c93f;
+  background-color: #27c93f;
 }
 
-
 main {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 main > h1 {
-    color: white;
+  color: white;
 }
 
 main > p {
-    color: white;
+  color: white;
 }
 
 .poke-description {
-    padding-top: 20px;
-    padding-bottom: 20px;
-
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .poke-display-box {
-    width: 100%;
-    background-color: black;
-    border-radius: 10px;
+  width: 100%;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .poke-display {
-    max-height: 50vh;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    overflow: hidden; /* Prevents the image from overflowing */
+  max-height: 50vh;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden; /* Prevents the image from overflowing */
 }
 
 .poke-description-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .retro-poke-description {
-    color: #66d3a8;
-    font-size: 0.575rem;
-    line-height: 1.25rem;
+  color: #66d3a8;
+  font-size: 0.575rem;
+  line-height: 1.25rem;
 }
 
 .retro-poke-description-h2 {
-    font-size: 0.875rem;
-
+  font-size: 0.875rem;
 }
 
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding-top: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 26px;
 }
 
 footer > form {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2%;
 }
 
-footer > form > input {
-    flex-basis: 150px;
-    flex-shrink: 1;
-    flex-grow: 1;
-    padding: 4px;
-    border-radius: 10px;
-    height: 35px;
-    outline: none;
-    border: none;
-    background-color: #e1b1ad;
-    
+
+#input-box {
+  width: 100%;
 }
 
-footer > form > input::placeholder {
-    font-size: 0.95rem;
-    font-family: "Roboto", "sans-serif";
-    padding-left: 10px;
+footer > form > div > input {
+  width: 100%;
+  flex-basis: 150px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  padding: 4px;
+  border-radius: 10px;
+  height: 35px;
+  outline: none;
+  border: none;
+  background-color: #e1b1ad;
+}
+
+footer > form > div > input::placeholder {
+  font-size: 0.95rem;
+  font-family: "Roboto", "sans-serif";
+  padding-left: 10px;
 }
 
 footer > form > button {
-    padding: 7px;
-    border-radius: 50%;
-    background-color: black;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 7px;
+  border-radius: 50%;
+  background-color: black;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer > form > button > img {
-    padding: 2px;
-    width: 20px;
+  padding: 2px;
+  width: 20px;
 }
 
 .new-poke-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
 }
 
 .new-span-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
 }
 
-
 .new-poke-box > img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain; /* This property is crucial */
-    max-height: 40%; /* Limits the height to fit within the container */
-    
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* This property is crucial */
+  max-height: 40%; /* Limits the height to fit within the container */
 }
 
 .new-span {
-    font-family: "Press Start 2P";
-    font-size: 0.55rem;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    min-height: 20px;
-    padding: 0 10px;
-    border-radius: 15px;
-    color: black;
-    text-align: center;
-    word-break: break-word;
-    white-space: normal;
-    line-height: 1.3;
-    flex-shrink: 1;
-    min-width: 0;
+  font-family: "Press Start 2P";
+  font-size: 0.55rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  min-height: 20px;
+  padding: 0 10px;
+  border-radius: 15px;
+  color: black;
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.3;
+  flex-shrink: 1;
+  min-width: 0;
 }
+
+
+
+
+
+
+#custom-select {
+  background-color: #e1b1ad;
+  display: absolute;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.options {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.options-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 460px) {
-    .poke-description{
-        font-size: 0.755rem ;
-    }
+  .poke-description {
+    font-size: 0.755rem;
+  }
 
-    .retro-poke-description {
-        font-size: 0.55rem;
-    }
+  .retro-poke-description {
+    font-size: 0.55rem;
+  }
 }
 
-
 @media (max-width: 480px) {
-    #poke-img {
-        width: 70%;
-    }
+  #poke-img {
+    width: 70%;
+  }
 
-    .new-span {
-        font-size: 0.5rem;
-        padding: 0 8px;
-    }
-    
-    .new-span-box {
-        gap: 8px;
-    }
+  .new-span {
+    font-size: 0.5rem;
+    padding: 0 8px;
+  }
+
+  .new-span-box {
+    gap: 8px;
+  }
 }
 
 @media (max-width: 360px) {
-    #poke-img {
-        width: 70%;
-    }
+  #poke-img {
+    width: 70%;
+  }
 
+  .new-span-box {
+    flex-direction: column;
+  }
 
-    .new-span-box {
-        flex-direction: column;
-    }
-    
-    .new-span {
-        font-size: 0.4rem;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        width: 90%;
-        max-width: 200px;
-    }
+  .new-span {
+    font-size: 0.4rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 90%;
+    max-width: 200px;
+  }
 }

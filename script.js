@@ -4,136 +4,145 @@ const submitButton = document.getElementById("submit");
 const regex = /^[A-Za-z]/g;
 
 search.addEventListener("input", (event) => {
-    // Allow only letters in the search input
-    event.target.value = event.target.value.replace(/[^A-Za-z]/g, "");
+  // Allow only letters in the search input
+  event.target.value = event.target.value.replace(/[^A-Za-z]/g, "");
 });
 
-formSubmit.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    
-    const pokemonValue = search.value.toLowerCase();
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonValue}`;
+formSubmit.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    try {
-        const response = await fetch(url);
-        if (response.status === 200) {
-            const pokeObj = await response.json();
-            
-            const pokeDescriptionBox = document.getElementsByClassName("poke-description-box")[0];
+  const pokemonValue = search.value.toLowerCase();
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonValue}`;
 
-            // Pokémon type colors
-            const colorType = [
-                {
-                    bug: "#1c4b27",
-                    dark: "#040706",
-                    dragon: "#448b95",
-                    electric: "#e3e32b",
-                    fairy: "#971944",
-                    fighting: "#994023",
-                    fire: "#ab1f23",
-                    flying: "#4a677d",
-                    ghost: "#33336b",
-                    grass: "#147b3d",
-                    ground: "#a9702c",
-                    ice: "#86d2f5",
-                    normal: "#75515b",
-                    poison: "#5e2d88",
-                    psychic: "#a11660ff",
-                    rock: "#48180b",
-                    steel: "#5f756d",
-                    water: "#1552e2",
-                }
-            ];
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const pokeObj = await response.json();
 
-            if (pokemonValue !== "") {
-                // Hide welcome message if a Pokémon was searched
-                pokeDescriptionBox.style.display = "none";
-            } else {
-                alert("Type something");
-            }
+      const pokeDescriptionBox = document.getElementsByClassName(
+        "poke-description-box"
+      )[0];
 
-            const sound = document.getElementById("sound");
+      // Pokémon type colors
+      const colorType = [
+        {
+          bug: "#1c4b27",
+          dark: "#040706",
+          dragon: "#448b95",
+          electric: "#e3e32b",
+          fairy: "#971944",
+          fighting: "#994023",
+          fire: "#ab1f23",
+          flying: "#4a677d",
+          ghost: "#33336b",
+          grass: "#147b3d",
+          ground: "#a9702c",
+          ice: "#86d2f5",
+          normal: "#75515b",
+          poison: "#5e2d88",
+          psychic: "#a11660ff",
+          rock: "#48180b",
+          steel: "#5f756d",
+          water: "#1552e2",
+        },
+      ];
 
-            const pokeDisplay = document.getElementsByClassName("poke-display")[0];
+      if (pokemonValue !== "") {
+        // Hide welcome message if a Pokémon was searched
+        pokeDescriptionBox.style.display = "none";
+      } else {
+        alert("Type something");
+      }
 
-            // Container for the new Pokémon card
-            const newPokeBox = document.createElement("div");
-            newPokeBox.setAttribute("class", "new-poke-box");
+      const sound = document.getElementById("sound");
 
-            // Pokémon sprite image
-            const pokeImg = document.createElement("img");
-            pokeImg.setAttribute("id", "poke-img");
-            pokeImg.setAttribute("src", `${pokeObj.sprites.front_default}`);
+      const pokeDisplay = document.getElementsByClassName("poke-display")[0];
 
-            // Container for Pokémon info spans
-            const newSpanBox = document.createElement("div");
-            newSpanBox.setAttribute("class", "new-span-box");
+      // Container for the new Pokémon card
+      const newPokeBox = document.createElement("div");
+      newPokeBox.setAttribute("class", "new-poke-box");
 
-            // Pokémon type
-            const spanType = document.createElement("span");
-            spanType.setAttribute("id", "type");
-            spanType.setAttribute("class", "new-span");
-            spanType.innerText = `Type: ${pokeObj.types[0].type.name}`;
+      // Pokémon sprite image
+      const pokeImg = document.createElement("img");
+      pokeImg.setAttribute("id", "poke-img");
+      pokeImg.setAttribute("src", `${pokeObj.sprites.front_default}`);
 
-            // Pokémon weight
-            const spanWeight = document.createElement("span");
-            spanWeight.setAttribute("id", "weight");
-            spanWeight.setAttribute("class", "new-span");
-            spanWeight.innerText = `Weight: ${pokeObj.weight}`;
+      // Container for Pokémon info spans
+      const newSpanBox = document.createElement("div");
+      newSpanBox.setAttribute("class", "new-span-box");
 
-            // Pokémon generation
-            const spanGeneration = document.createElement("span");
-            spanGeneration.setAttribute("id", "generation");
-            spanGeneration.setAttribute("class", "new-span");
-            
-            let generationName = "N/A";
-            if (pokeObj.species && pokeObj.species.url) {
-                try {
-                    const speciesResponse = await fetch(pokeObj.species.url);
-                    const speciesObj = await speciesResponse.json();
-                    generationName = speciesObj.generation.name;
-                } catch (speciesError) {
-                    console.log("Could not fetch species data:", speciesError);
-                }
-            }
-            spanGeneration.innerText = `Generation: ${generationName}`;
+      // Pokémon type
+      const spanType = document.createElement("span");
+      spanType.setAttribute("id", "type");
+      spanType.setAttribute("class", "new-span");
+      spanType.innerText = `Type: ${pokeObj.types[0].type.name}`;
 
-            // Append elements
-            pokeDisplay.appendChild(newPokeBox);
-            newPokeBox.appendChild(pokeImg);
-            newPokeBox.appendChild(newSpanBox);
-            newSpanBox.appendChild(spanType);
-            newSpanBox.appendChild(spanWeight);
-            newSpanBox.appendChild(spanGeneration);
-            newSpanBox.style.paddingBottom = "30px";
-            
-            sound.play();
+      // Pokémon weight
+      const spanWeight = document.createElement("span");
+      spanWeight.setAttribute("id", "weight");
+      spanWeight.setAttribute("class", "new-span");
+      spanWeight.innerText = `Weight: ${pokeObj.weight}`;
 
-            // Set background colors for spans by type
-            const colorObj = colorType[0];
-            const type = pokeObj.types[0].type.name;
-            const spans = document.querySelectorAll(".new-span");
-            spans.forEach((span) => {
-                span.style.backgroundColor = colorObj[type];
-                span.style.color = "white";
-            });
+      // Pokémon generation
+      const spanGeneration = document.createElement("span");
+      spanGeneration.setAttribute("id", "generation");
+      spanGeneration.setAttribute("class", "new-span");
 
-            // Keep only the latest Pokémon card on screen
-            while (pokeDisplay.children.length > 2) {
-                pokeDisplay.children[1].remove();
-            }
-        } else {
-            // Pokémon not found
-            alert("Pokémon not found. Please try again.");
-            const pokeDescriptionBox = document.getElementsByClassName("poke-description-box")[0];
-            pokeDescriptionBox.style.display = "flex";
-            const pokeDisplay = document.getElementsByClassName("poke-display")[0];
-            while (pokeDisplay.children.length > 1) {
-                pokeDisplay.children[1].remove();
-            }
+
+      //Dropbox filter
+
+
+
+      let generationName = "N/A";
+      if (pokeObj.species && pokeObj.species.url) {
+        try {
+          const speciesResponse = await fetch(pokeObj.species.url);
+          const speciesObj = await speciesResponse.json();
+          generationName = speciesObj.generation.name;
+        } catch (speciesError) {
+          console.log("Could not fetch species data:", speciesError);
         }
-    } catch (error) {
-        console.log("Error:", error);
-        alert("An error occurred. Please check the console for details.");
+      }
+      spanGeneration.innerText = `Generation: ${generationName}`;
+
+      // Append elements
+      pokeDisplay.appendChild(newPokeBox);
+      newPokeBox.appendChild(pokeImg);
+      newPokeBox.appendChild(newSpanBox);
+      newSpanBox.appendChild(spanType);
+      newSpanBox.appendChild(spanWeight);
+      newSpanBox.appendChild(spanGeneration);
+      newSpanBox.style.paddingBottom = "30px";
+
+      sound.play();
+
+      // Set background colors for spans by type
+      const colorObj = colorType[0];
+      const type = pokeObj.types[0].type.name;
+      const spans = document.querySelectorAll(".new-span");
+      spans.forEach((span) => {
+        span.style.backgroundColor = colorObj[type];
+        span.style.color = "white";
+      });
+
+      // Keep only the latest Pokémon card on screen
+      while (pokeDisplay.children.length > 2) {
+        pokeDisplay.children[1].remove();
+      }
+    } else {
+      // Pokémon not found
+      alert("Pokémon not found. Please try again.");
+      const pokeDescriptionBox = document.getElementsByClassName(
+        "poke-description-box"
+      )[0];
+      pokeDescriptionBox.style.display = "flex";
+      const pokeDisplay = document.getElementsByClassName("poke-display")[0];
+      while (pokeDisplay.children.length > 1) {
+        pokeDisplay.children[1].remove();
+      }
     }
+  } catch (error) {
+    console.log("Error:", error);
+    alert("An error occurred. Please check the console for details.");
+  }
 });

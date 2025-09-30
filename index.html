@@ -1,54 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Pokedex</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="bodyheader press-start-font"><h1>Pokédex</h1></header>
     <div id="display-box">
-        <section class="section1">
-            <header class="poke-header">
-                    <nav>
-                        <div class="large-circle"></div>
-                        <div class="small-circle small-circle1"></div>
-                        <div class="small-circle small-circle2"></div>
-                        <div class="small-circle small-circle3"></div>
-                    </nav>
-            </header>
-            <main>
-                <h1 class="press-start-font">
-                    Pokédex
-                </h1>
-                <p class="poke-description roboto-font">Your Pokémon encyclopedia. Explore species, types, and regions in a classic Pokédex style.</p>
-                <div class="poke-display-box">
-                    <div class="poke-display">
-                        <div class="poke-description-box">
-                            <p class="retro-poke-description press-start-font">Starting scan...</p>
-                            <h2 class="retro-poke-description press-start-font retro-poke-description-h2">Welcome to the Pokédex</h2>
-                            <p class="retro-poke-description press-start-font">Search for your Pokémon</p>
-                        </div>
-                        </div>
-                </div>
-                <footer>
-                    <form id="form-submit">
-                        <input type="text" id="search" placeholder="Search">
-                        <button id="submit" type="submit"><img src="img/search.png" alt="Search button"><audio id="sound">
-                            <source src="sound/pokesound.mp3" type="audio/mpeg">
-                        </audio></button>
-                    </form>
-                </footer>
-            </main>
-            <select name="" id="">
-                <option value="">oi</option>
-                <option value="">oi2</option>
-            </select>
-        </section>
+      <section class="section1">
+        <header class="poke-header">
+          <nav>
+            <div class="large-circle"></div>
+            <div class="small-circle small-circle1"></div>
+            <div class="small-circle small-circle2"></div>
+            <div class="small-circle small-circle3"></div>
+          </nav>
+        </header>
+        <main>
+          <h1 class="press-start-font">Pokédex</h1>
+          <p class="poke-description roboto-font">
+            Your Pokémon encyclopedia. Explore species, types, and regions in a
+            classic Pokédex style.
+          </p>
+          <div class="poke-display-box">
+            <div class="poke-display">
+              <div class="poke-description-box">
+                <p class="retro-poke-description press-start-font">
+                  Starting scan...
+                </p>
+                <h2
+                  class="retro-poke-description press-start-font retro-poke-description-h2"
+                >
+                  Welcome to the Pokédex
+                </h2>
+                <p class="retro-poke-description press-start-font">
+                  Search for your Pokémon
+                </p>
+              </div>
+            </div>
+          </div>
+          <footer>
+            <form id="form-submit">
 
-        
+
+              <div id="input-box">
+                <input type="text" id="search" placeholder="Search" />
+                <div id="custom-select">
+                  <ul class="options"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" class="options-img"><p class="options-description">teste1</p></ul>
+                  <ul class="options"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" class="options-img"><p class="options-description">teste2</p></ul>
+                  <ul class="options"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" class="options-img"><p class="options-description">teste3</p></ul>
+                </div>
+              
+              </div>
+
+
+
+
+
+              <button id="submit" type="submit">
+                <img src="img/search.png" alt="Search button" /><audio
+                  id="sound"
+                >
+                  <source src="sound/pokesound.mp3" type="audio/mpeg" />
+                </audio>
+              </button>
+
+
+
+            </form>
+
+            </div>
+          </footer>
+        </main>
+      </section>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
