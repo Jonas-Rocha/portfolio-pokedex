@@ -1,63 +1,83 @@
 const formSubmit = document.getElementById("form-submit");
 const search = document.getElementById("search");
 const submitButton = document.getElementById("submit");
-const customSelect = document.getElementById("custom-select")
+const customSelect = document.getElementById("custom-select");
 
 search.addEventListener("input", async (event) => {
   // Allow only letters in the search input
   const regex = /[^A-Za-z-]/g;
   search.value = search.value.replace(regex, "");
+  
 
   try {
     const pokemonValue = search.value.toLowerCase();
+    if (pokemonValue === "") {
+     return customSelect.innerHTML = "";
+    }
+
+    // 1. pega todos os pokemons
     const url = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`;
     const response = await fetch(url);
     const pokeObjNoLimit = await response.json();
-    console.log(pokeObjNoLimit)
+    const results = pokeObjNoLimit.results;
 
-    let pokeObjMap = pokeObjNoLimit.results.map( async (item) => {
-      let pokeNome = item.name;
+    // 2. filtra só os que começam com o valor digitado
+    const filtrados = results.filter((result) =>
+      result.name.startsWith(pokemonValue)
+    );
+    customSelect.innerHTML = ""; // sempre limpa antes
 
-      if (pokeNome.startsWith(pokemonValue)) {
-      customSelect.innerHTML = ""
-      if (pokemonValue === "") return;
-      
-      
-      const urlPokeFilter = `https://pokeapi.co/api/v2/pokemon/${pokeNome}`
-      const urlPokeFilterResponse = await fetch(urlPokeFilter)
-      const urlPokeFilterJson = await urlPokeFilterResponse.json()
+    if (filtrados.length === 0) {
+      // Mostra mensagem de "não encontrado"
+      const options = document.createElement("ul");
+      options.setAttribute("class", "options");
 
-        // Dropbox filter
+      const optionsP = document.createElement("p");
+      optionsP.setAttribute("class", "options-description");
+      optionsP.innerText = "Pokemon not found!";
 
-        // Criando a lista UL
-        const options = document.createElement("ul");
-        options.setAttribute("class", "options");
+      options.appendChild(optionsP);
+      customSelect.appendChild(options);
+      return; // encerra aqui
+    }
 
-        // Criando a imagem da lista UL
-        const optionsImg = document.createElement("img");
-        optionsImg.setAttribute("src", `${urlPokeFilterJson.sprites.front_default}`);
-        optionsImg.setAttribute("class", "options-img");
+    console.log("Filtrados:", filtrados);
 
-        // Criando o <p> (texto dentro da lista UL)
-        const optionsP = document.createElement("p");
-        optionsP.setAttribute("class", "options-description");
-        optionsP.innerText = pokeNome;
+    for (let poke of filtrados) {
+      // 3. exemplo: pegar sprite do primeiro pokemon filtrado
+      const urlPokeFilter = `https://pokeapi.co/api/v2/pokemon/${poke.name}`;
+      const urlPokeFilterResponse = await fetch(urlPokeFilter);
+      const urlPokeFilterJson = await urlPokeFilterResponse.json();
 
-        
-        customSelect.appendChild(options);
-        options.appendChild(optionsImg);
-        options.appendChild(optionsP);
+      // Dropbox filter
 
+      // Criando a lista UL
+      const options = document.createElement("ul");
+      options.setAttribute("class", "options");
 
-        options.addEventListener("click", (event) => {
-          event.preventDefault();
-          customSelect.innerHTML = ""
-          search.value = optionsP.textContent
-        })
-        
-      }
+      // Criando a imagem da lista UL
+      const optionsImg = document.createElement("img");
+      optionsImg.setAttribute(
+        "src",
+        `${urlPokeFilterJson.sprites.front_default}`
+      );
+      optionsImg.setAttribute("class", "options-img");
 
-    });
+      // Criando o <p> (texto dentro da lista UL)
+      const optionsP = document.createElement("p");
+      optionsP.setAttribute("class", "options-description");
+      optionsP.innerText = poke.name;
+
+      customSelect.appendChild(options);
+      options.appendChild(optionsImg);
+      options.appendChild(optionsP);
+
+      options.addEventListener("click", (event) => {
+        event.preventDefault();
+        customSelect.innerHTML = "";
+        search.value = optionsP.textContent;
+      });
+    }
   } catch (error) {
     console.log("Error:", error);
   }
