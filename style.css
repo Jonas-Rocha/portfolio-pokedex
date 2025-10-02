@@ -266,6 +266,8 @@ footer > form > button > img {
   width: 100%;
   border-radius: 10px;
   position: absolute;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .options {
