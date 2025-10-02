@@ -168,6 +168,7 @@ footer > form {
   flex-direction: row;
   align-items: center;
   gap: 2%;
+  position: relative;
 }
 
 
@@ -260,16 +261,23 @@ footer > form > button > img {
 
 
 #custom-select {
-  background-color: #e1b1ad;
+  background-color: #FFFF;
   display: absolute;
   width: 100%;
   border-radius: 10px;
+  position: absolute;
 }
 
 .options {
   list-style: none;
   display: flex;
   flex-direction: row;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.options:hover {
+  background-color: #1e98ca;
 }
 
 .options-img {
