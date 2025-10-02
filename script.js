@@ -2,7 +2,6 @@ const formSubmit = document.getElementById("form-submit");
 const search = document.getElementById("search");
 const submitButton = document.getElementById("submit");
 const customSelect = document.getElementById("custom-select")
-const regex = /^[A-Za-z]/g;
 
 search.addEventListener("input", async (event) => {
   // Allow only letters in the search input
