@@ -48,6 +48,13 @@ search.addEventListener("input", async (event) => {
         customSelect.appendChild(options);
         options.appendChild(optionsImg);
         options.appendChild(optionsP);
+
+
+        options.addEventListener("click", (event) => {
+          event.preventDefault();
+          customSelect.innerHTML = ""
+          search.value = optionsP.textContent
+        })
         
       }
 
