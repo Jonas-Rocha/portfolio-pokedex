@@ -1,6 +1,7 @@
 const formSubmit = document.getElementById("form-submit");
 const search = document.getElementById("search");
 const submitButton = document.getElementById("submit");
+const customSelect = document.getElementById("custom-select")
 const regex = /^[A-Za-z]/g;
 
 search.addEventListener("input", async (event) => {
@@ -19,16 +20,15 @@ search.addEventListener("input", async (event) => {
       let pokeNome = item.name;
 
       if (pokeNome.startsWith(pokemonValue)) {
+      customSelect.innerHTML = ""
+      if (pokemonValue === "") return;
+      
+      
       const urlPokeFilter = `https://pokeapi.co/api/v2/pokemon/${pokeNome}`
       const urlPokeFilterResponse = await fetch(urlPokeFilter)
       const urlPokeFilterJson = await urlPokeFilterResponse.json()
-      
 
         // Dropbox filter
-
-        // Criando a div Pai
-        const customSelect = document.createElement("div");
-        customSelect.setAttribute("id", "custom-select");
 
         // Criando a lista UL
         const options = document.createElement("ul");
@@ -44,12 +44,13 @@ search.addEventListener("input", async (event) => {
         optionsP.setAttribute("class", "options-description");
         optionsP.innerText = pokeNome;
 
-        let inputBox = document.getElementById("input-box");
-        inputBox.appendChild(customSelect);
+        
         customSelect.appendChild(options);
         options.appendChild(optionsImg);
         options.appendChild(optionsP);
+        
       }
+
     });
   } catch (error) {
     console.log("Error:", error);
