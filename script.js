@@ -4,31 +4,53 @@ const submitButton = document.getElementById("submit");
 const customSelect = document.getElementById("custom-select");
 
 search.addEventListener("input", async (event) => {
-  // Allow only letters in the search input
+
+  search.addEventListener("focusout", (event) => {
+    event.preventDefault();
+  // clear dropdown every time input changes
+  customSelect.innerHTML = "";
+  })
+
+ 
+
+
+
+  // allow only letters and dashes in the input
   const regex = /[^A-Za-z-]/g;
   search.value = search.value.replace(regex, "");
-  
+
+  const pokemonValue = search.value.toLowerCase();
+
+  // clear dropdown every time input changes
+  customSelect.innerHTML = "";
+
+  // if input is empty, just stop here
+  if (pokemonValue === "") {
+    return;
+  }
+
+  // keep current value to avoid async bugs
+  const currentValue = pokemonValue;
 
   try {
-    const pokemonValue = search.value.toLowerCase();
-    if (pokemonValue === "") {
-     return customSelect.innerHTML = "";
-    }
-
-    // 1. pega todos os pokemons
+    // get all pokemons from API
     const url = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`;
     const response = await fetch(url);
     const pokeObjNoLimit = await response.json();
     const results = pokeObjNoLimit.results;
 
-    // 2. filtra só os que começam com o valor digitado
+    // check again: if input changed while waiting, cancel
+    if (search.value.toLowerCase() !== currentValue) {
+      return;
+    }
+
+    // filter pokemons that start with typed letters
     const filtrados = results.filter((result) =>
       result.name.startsWith(pokemonValue)
     );
-    customSelect.innerHTML = ""; // sempre limpa antes
 
     if (filtrados.length === 0) {
-      // Mostra mensagem de "não encontrado"
+      // show "not found" message
       const options = document.createElement("ul");
       options.setAttribute("class", "options");
 
@@ -38,40 +60,37 @@ search.addEventListener("input", async (event) => {
 
       options.appendChild(optionsP);
       customSelect.appendChild(options);
-      return; // encerra aqui
+      return;
     }
 
-    console.log("Filtrados:", filtrados);
-
+    // create dropdown options for each filtered pokemon
     for (let poke of filtrados) {
-      // 3. exemplo: pegar sprite do primeiro pokemon filtrado
       const urlPokeFilter = `https://pokeapi.co/api/v2/pokemon/${poke.name}`;
       const urlPokeFilterResponse = await fetch(urlPokeFilter);
       const urlPokeFilterJson = await urlPokeFilterResponse.json();
 
-      // Dropbox filter
+      // again, ignore if input changed
+      if (search.value.toLowerCase() !== currentValue) {
+        return;
+      }
 
-      // Criando a lista UL
+      // build option element
       const options = document.createElement("ul");
       options.setAttribute("class", "options");
 
-      // Criando a imagem da lista UL
       const optionsImg = document.createElement("img");
-      optionsImg.setAttribute(
-        "src",
-        `${urlPokeFilterJson.sprites.front_default}`
-      );
+      optionsImg.setAttribute("src", urlPokeFilterJson.sprites.front_default);
       optionsImg.setAttribute("class", "options-img");
 
-      // Criando o <p> (texto dentro da lista UL)
       const optionsP = document.createElement("p");
       optionsP.setAttribute("class", "options-description");
       optionsP.innerText = poke.name;
 
-      customSelect.appendChild(options);
       options.appendChild(optionsImg);
       options.appendChild(optionsP);
+      customSelect.appendChild(options);
 
+      // when clicking an option, fill input and close dropdown
       options.addEventListener("click", (event) => {
         event.preventDefault();
         customSelect.innerHTML = "";
@@ -97,7 +116,7 @@ formSubmit.addEventListener("submit", async (event) => {
         "poke-description-box"
       )[0];
 
-      // Pokémon type colors
+      // colors for each pokemon type
       const colorType = [
         {
           bug: "#1c4b27",
@@ -122,42 +141,41 @@ formSubmit.addEventListener("submit", async (event) => {
       ];
 
       if (pokemonValue !== "") {
-        // Hide welcome message if a Pokémon was searched
+        // hide welcome message when a pokemon is found
         pokeDescriptionBox.style.display = "none";
       } else {
         alert("Type something");
       }
 
       const sound = document.getElementById("sound");
-
       const pokeDisplay = document.getElementsByClassName("poke-display")[0];
 
-      // Container for the new Pokémon card
+      // new pokemon card container
       const newPokeBox = document.createElement("div");
       newPokeBox.setAttribute("class", "new-poke-box");
 
-      // Pokémon sprite image
+      // pokemon sprite image
       const pokeImg = document.createElement("img");
       pokeImg.setAttribute("id", "poke-img");
       pokeImg.setAttribute("src", `${pokeObj.sprites.front_default}`);
 
-      // Container for Pokémon info spans
+      // info box
       const newSpanBox = document.createElement("div");
       newSpanBox.setAttribute("class", "new-span-box");
 
-      // Pokémon type
+      // type
       const spanType = document.createElement("span");
       spanType.setAttribute("id", "type");
       spanType.setAttribute("class", "new-span");
       spanType.innerText = `Type: ${pokeObj.types[0].type.name}`;
 
-      // Pokémon weight
+      // weight
       const spanWeight = document.createElement("span");
       spanWeight.setAttribute("id", "weight");
       spanWeight.setAttribute("class", "new-span");
       spanWeight.innerText = `Weight: ${pokeObj.weight}`;
 
-      // Pokémon generation
+      // generation (needs another fetch)
       const spanGeneration = document.createElement("span");
       spanGeneration.setAttribute("id", "generation");
       spanGeneration.setAttribute("class", "new-span");
@@ -174,7 +192,7 @@ formSubmit.addEventListener("submit", async (event) => {
       }
       spanGeneration.innerText = `Generation: ${generationName}`;
 
-      // Append elements
+      // put everything on screen
       pokeDisplay.appendChild(newPokeBox);
       newPokeBox.appendChild(pokeImg);
       newPokeBox.appendChild(newSpanBox);
@@ -183,9 +201,10 @@ formSubmit.addEventListener("submit", async (event) => {
       newSpanBox.appendChild(spanGeneration);
       newSpanBox.style.paddingBottom = "30px";
 
+      // play sound when showing pokemon
       sound.play();
 
-      // Set background colors for spans by type
+      // set background color depending on type
       const colorObj = colorType[0];
       const type = pokeObj.types[0].type.name;
       const spans = document.querySelectorAll(".new-span");
@@ -194,12 +213,12 @@ formSubmit.addEventListener("submit", async (event) => {
         span.style.color = "white";
       });
 
-      // Keep only the latest Pokémon card on screen
+      // keep only the latest card (remove old ones)
       while (pokeDisplay.children.length > 2) {
         pokeDisplay.children[1].remove();
       }
     } else {
-      // Pokémon not found
+      // if pokemon doesn't exist
       alert("Pokémon not found. Please try again.");
       const pokeDescriptionBox = document.getElementsByClassName(
         "poke-description-box"
