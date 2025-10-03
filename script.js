@@ -4,16 +4,9 @@ const submitButton = document.getElementById("submit");
 const customSelect = document.getElementById("custom-select");
 
 search.addEventListener("input", async (event) => {
-
-  search.addEventListener("focusout", (event) => {
-    event.preventDefault();
-  // clear dropdown every time input changes
-  customSelect.innerHTML = "";
-  })
-
- 
-
-
+  search.addEventListener("focusout", () => {
+    customSelect.innerHTML = "";
+  });
 
   // allow only letters and dashes in the input
   const regex = /[^A-Za-z-]/g;
@@ -75,7 +68,7 @@ search.addEventListener("input", async (event) => {
       }
 
       // build option element
-      const options = document.createElement("ul");
+      const options = document.createElement("li");
       options.setAttribute("class", "options");
 
       const optionsImg = document.createElement("img");
@@ -90,12 +83,12 @@ search.addEventListener("input", async (event) => {
       options.appendChild(optionsP);
       customSelect.appendChild(options);
 
-      // when clicking an option, fill input and close dropdown
-      options.addEventListener("click", (event) => {
+      options.addEventListener("mousedown", (event) => {
         event.preventDefault();
-        customSelect.innerHTML = "";
         search.value = optionsP.textContent;
+         customSelect.innerHTML = "";
       });
+
     }
   } catch (error) {
     console.log("Error:", error);
