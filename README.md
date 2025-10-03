@@ -5,6 +5,8 @@ An interactive web application that consumes the PokeAPI to display detailed inf
 ## Features
 
 * **Pokémon Search**: Users can search for any Pokémon by name.
+* **Live Search Filter**: As the user types, the list of Pokémon is dynamically filtered to show only results that match the input in real-time.
+* **Autocomplete on Selection**: Clicking on a Pokémon from the filtered list will autocomplete its name in the search field, making it easier to view its detailed information.
 * **Dynamic Information Display**: Fetches and displays the Pokémon's image, type, weight, and generation from the PokeAPI.
 * **Themed UI**: Styled to resemble a classic Pokédex for a nostalgic user experience.
 * **Responsive Design**: The layout adapts to different screen sizes, from mobile devices to desktops.
