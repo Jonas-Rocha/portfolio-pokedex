@@ -192,7 +192,6 @@ formSubmit.addEventListener("submit", async (event) => {
       newSpanBox.appendChild(spanType);
       newSpanBox.appendChild(spanWeight);
       newSpanBox.appendChild(spanGeneration);
-      newSpanBox.style.paddingBottom = "30px";
 
       // play sound when showing pokemon
       sound.play();
